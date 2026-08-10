@@ -1,0 +1,69 @@
+/* =============================================================
+   Design Tokens — InsanBermakna
+   Sumber: DESIGN.md Section 2 (Palet Warna), Section 4 (Typography),
+           Section 12 (Filosofi Animasi)
+   ============================================================= */
+
+:root {
+  /* --- Palet Warna ------------------------------------------ */
+  --color-bg-primary: #F4EBDD;        /* warm paper background */
+  --color-bg-secondary: #E9D8C3;      /* area/section sekunder */
+  --color-text-primary: #4A382D;       /* teks utama */
+  --color-text-secondary: #806B5B;     /* supporting text */
+  --color-accent-warm: #C47A45;        /* aksen hangat */
+  --color-accent-gold: #C9A66B;        /* aksen kecil, jangan dominan */
+  --color-black-opening: #11100E;      /* state awal opening */
+  --color-dot: #F5F0E8;               /* warm ivory / pale cream untuk dot */
+
+  /* --- Typography ------------------------------------------- */
+  /* Serif editorial: quote, statement emosional, teks utama */
+  --font-serif: 'Cormorant Garamond', 'Libre Baskerville', 'DM Serif Display', Georgia, serif;
+  /* Sans-serif: supporting text, CTA, UI */
+  --font-sans: 'Inter', 'Manrope', 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Font sizes — skala modular, mobile-first */
+  --text-xs: clamp(0.7rem, 0.65rem + 0.2vw, 0.8rem);
+  --text-sm: clamp(0.85rem, 0.8rem + 0.3vw, 0.95rem);
+  --text-base: clamp(1rem, 0.95rem + 0.5vw, 1.1rem);
+  --text-lg: clamp(1.25rem, 1.1rem + 1vw, 1.5rem);
+  --text-xl: clamp(1.5rem, 1.25rem + 1.25vw, 1.875rem);
+  --text-2xl: clamp(1.75rem, 1.5rem + 1.5vw, 2.5rem);
+  --text-3xl: clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem);
+
+  /* Line heights */
+  --leading-tight: 1.3;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.8;
+
+  /* Letter spacing */
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+
+  /* --- Animasi / Easing ------------------------------------- */
+  /* Easing utama dari DESIGN.md Section 12 */
+  --ease-gentle: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Durasi standar */
+  --duration-fast: 300ms;
+  --duration-normal: 600ms;
+  --duration-slow: 1200ms;
+  --duration-very-slow: 2000ms;
+
+  /* --- Spacing ---------------------------------------------- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 10rem;
+
+  /* --- Z-index layers --------------------------------------- */
+  --z-base: 0;
+  --z-content: 10;
+  --z-overlay: 100;
+  --z-opening: 1000;
+}

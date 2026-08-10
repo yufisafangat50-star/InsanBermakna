@@ -1,0 +1,259 @@
+/* =============================================================
+   Kenangan.css — Styles untuk Section 2 (Kenangan Bersama)
+   ============================================================= */
+
+.kenangan {
+  position: relative;
+  min-height: 100vh;
+  padding: var(--space-3xl) 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Background SVG Container */
+.kenangan__line-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.kenangan__line-svg {
+  display: block;
+}
+
+/* Origin Dot Wrapper */
+.kenangan__origin-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 15vh;
+  margin-bottom: 5vh;
+  z-index: 1;
+}
+
+.kenangan__origin-dot {
+  width: 8px;
+  background-color: var(--color-accent);
+  border-radius: 4px;
+}
+
+/* Moments Container */
+.kenangan__moments-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(100px, 15vh, 200px); /* Tighter vertical spacing on mobile */
+  padding: 0 var(--space-md);
+  padding-bottom: 20vh; /* Ruang untuk transisi ke section berikutnya */
+}
+
+/* Moment Layout - Mobile First (Anchor at ~25%) */
+.moment {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+.moment__anchor-container {
+  position: absolute;
+  left: 25%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+
+/* Stagger mobile anchors around 20% to give more room for photos */
+.moment:nth-child(even) .moment__anchor-container {
+  left: 15%;
+}
+.moment:nth-child(odd) .moment__anchor-container {
+  left: 25%;
+}
+
+.moment__anchor-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+}
+
+.moment__anchor-bg,
+.moment__anchor-glow,
+.moment__anchor {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.moment__anchor-bg {
+  background-color: var(--color-bg-primary);
+  z-index: 1;
+}
+
+.moment__anchor-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.moment__anchor {
+  z-index: 3;
+}
+
+.moment__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  margin-left: 40%;
+  width: 60%;
+  padding-right: var(--space-md);
+}
+
+.moment__text-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 100%;
+}
+
+/* Pinned Photo Style (Polaroid) */
+.moment__photo-wrapper {
+  position: relative;
+  background: var(--color-bg-secondary, #fdfbf7);
+  padding: 8px 8px 24px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: var(--space-md);
+  max-width: 100%;
+  border-radius: 2px;
+  /* Inline rotation is overridden by even/odd classes below */
+}
+
+.moment--even .moment__photo-wrapper {
+  transform: rotate(-2deg);
+}
+
+.moment--odd .moment__photo-wrapper {
+  transform: rotate(2deg);
+}
+
+.moment__photo-pin {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle at 30% 30%, #e0e0e0, #888);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2), inset 0 -1px 2px rgba(0,0,0,0.4);
+  z-index: 1;
+}
+
+.moment__photo-pin::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 8px;
+  background: #333;
+  transform: translate(-50%, -50%) rotate(45deg);
+  z-index: -1;
+}
+
+.moment__photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+  filter: sepia(0.2) contrast(1.1); /* Slight vintage feel */
+}
+
+.moment__narration {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.moment__text {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  color: var(--color-text-primary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* Moment Layout - Desktop (Alternating) */
+@media (min-width: 768px) {
+  .moment {
+    display: grid;
+    grid-template-columns: 1fr 150px 1fr;
+    position: relative;
+  }
+
+  .moment__anchor-container {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Stagger the dots horizontally within the 150px center column */
+  .moment:nth-child(4n+1) .moment__anchor-container {
+    justify-content: flex-start;
+  }
+  .moment:nth-child(4n+2) .moment__anchor-container {
+    justify-content: flex-end;
+  }
+  .moment:nth-child(4n+3) .moment__anchor-container {
+    justify-content: center;
+  }
+  .moment:nth-child(4n+4) .moment__anchor-container {
+    justify-content: flex-start;
+  }
+
+  .moment__content {
+    width: 100%;
+  }
+
+  /* Even moments: text on the left */
+  .moment--even .moment__content {
+    grid-column: 1;
+    align-items: flex-end;
+    padding-left: 0;
+    padding-right: var(--space-xl);
+  }
+  .moment--even .moment__text {
+    text-align: right;
+  }
+
+  /* Odd moments: text on the right */
+  .moment--odd .moment__content {
+    grid-column: 3;
+    align-items: flex-start;
+    padding-right: 0;
+    padding-left: var(--space-xl);
+  }
+  .moment--odd .moment__text {
+    text-align: left;
+  }
+}

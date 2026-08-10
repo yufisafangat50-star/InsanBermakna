@@ -1,0 +1,74 @@
+/* =============================================================
+   Reflection.css — Styles untuk Section 3 (Reflection / Quote)
+   ============================================================= */
+
+.reflection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl) var(--space-md);
+  text-align: center;
+}
+
+/* 
+  Journey Simplification Sequence
+  A horizontal line with 5 dots that slowly simplify to nothing.
+*/
+.reflection__journey-simplification {
+  position: absolute;
+  top: 15vh;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  pointer-events: none;
+}
+
+.reflection__line {
+  width: 100%;
+  max-width: 300px;
+  height: 1px;
+  background-color: var(--color-accent-warm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.reflection__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent-warm);
+  box-shadow: 0 0 0 4px var(--color-bg-primary);
+  /* The outermost dots naturally sit on the edges due to space-between */
+}
+
+/* Quote Layout */
+.reflection__content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 10vh; /* Make room for the simplification sequence above */
+}
+
+.reflection__text {
+  font-family: var(--font-serif);
+  font-size: clamp(var(--text-lg), 3.5vw, var(--text-2xl));
+  color: var(--color-text-primary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.reflection__spacer {
+  height: clamp(var(--space-xl), 5vh, var(--space-2xl));
+}
+
+

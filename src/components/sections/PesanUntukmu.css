@@ -1,0 +1,212 @@
+/* =============================================================
+   PesanUntukmu.css — Styles untuk Section 4 (Pesan Acak)
+   ============================================================= */
+
+.pesan {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl) var(--space-md);
+}
+
+/* S3 -> S4 Entry Dot Container */
+.pesan__entry-dot-container {
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.pesan__entry-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent-warm);
+}
+
+.pesan__envelope-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 250px;
+  margin: 0 auto;
+  margin-top: 5vh;
+  perspective: 1000px;
+}
+
+.pesan__envelope-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transform-style: preserve-3d;
+}
+
+/* Envelope Back */
+.pesan__envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #d4bc9e;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+/* Envelope Front Group */
+.pesan__envelope-front-group {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.pesan__envelope-front {
+  position: absolute;
+  inset: 0;
+}
+
+.pesan__envelope-front::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #e4ceb1;
+  clip-path: polygon(0 0, 50% 50%, 0 100%);
+}
+
+.pesan__envelope-front::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #e4ceb1;
+  clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+}
+
+.pesan__envelope-bottom {
+  position: absolute;
+  inset: 0;
+  background: #ebd5b7;
+  clip-path: polygon(0 100%, 50% 50%, 100% 100%);
+  z-index: 4;
+}
+
+/* Envelope Flap (Top) */
+.pesan__envelope-flap {
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 100%;
+  background: #dfc8a9;
+  clip-path: polygon(0 0, 100% 0, 50% 50%);
+  z-index: 5;
+  transform-origin: top;
+  border-radius: 4px;
+}
+
+/* Wax Stamp */
+.pesan__stamp {
+  position: absolute;
+  top: calc(50% - 24px);
+  left: calc(50% - 24px);
+  width: 48px;
+  height: 48px;
+  background: #a33b3b;
+  border-radius: 50%;
+  z-index: 6;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.3), 0 4px 6px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pesan__stamp-inner {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+}
+
+/* Tactile Paper Object */
+.pesan__paper {
+  background-color: #fdfaf5; 
+  box-shadow: 0 4px 12px -4px rgba(0,0,0,0.05),
+              0 1px 3px rgba(0,0,0,0.02),
+              inset 0 0 0 1px rgba(0,0,0,0.02);
+  width: calc(100% - 40px);
+  position: absolute;
+  bottom: auto;
+  top: 10px;
+  left: 20px;
+  right: 20px;
+  min-height: 300px;
+  height: max-content;
+  border-radius: 2px 4px 3px 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-2xl) var(--space-xl);
+  overflow: hidden;
+}
+
+/* State: Closed */
+.pesan__closed {
+  display: none; /* We moved the text below the envelope! */
+}
+
+/* State: Opened */
+.pesan__opened {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-md) 0;
+}
+
+.pesan__text-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.pesan__text-line {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  color: var(--color-text-primary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.pesan__instruction {
+  margin-top: var(--space-xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  pointer-events: none;
+}
+
+.pesan__headline {
+  font-family: var(--font-serif);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  margin: 0;
+  letter-spacing: var(--tracking-wide);
+}
+
+.pesan__supporting {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin: 0;
+  opacity: 0.7;
+}

@@ -1,0 +1,102 @@
+/* =============================================================
+   Penutup.css — Styles untuk Section 5 (Penutup)
+   ============================================================= */
+
+.penutup {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl) var(--space-md);
+  text-align: center;
+  padding-bottom: 30vh;
+}
+
+/* 
+  Journey Line Terakhir: 
+  Garis vertikal menampung 8 titik akumulasi.
+*/
+.penutup__journey {
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  right: 0;
+  height: clamp(200px, 25vh, 300px);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.penutup__journey-line {
+  width: 1px;
+  height: 100%;
+  background-color: var(--color-accent);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.penutup__journey-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-bg-primary); /* Cutout effect so they don't blend into the line */
+}
+
+/* Teks Penutup */
+.penutup__content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 15vh; /* Ruang untuk animasi garis di atas */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.penutup__text {
+  font-family: var(--font-serif);
+  font-size: clamp(var(--text-base), 2.5vw, var(--text-lg));
+  color: var(--color-text-primary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+  text-align: center;
+}
+
+.penutup__spacer {
+  height: var(--space-xl);
+}
+
+/* Teks Final & Dot */
+.penutup__final {
+  margin-top: clamp(80px, 15vh, 120px);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.penutup__final-text {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--tracking-wide);
+  font-style: italic;
+  margin: 0;
+}
+
+.penutup__final-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-accent-warm);
+  border-radius: 50%;
+  z-index: 9999; /* Ensure it overlays everything when expanding */
+}

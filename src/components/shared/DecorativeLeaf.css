@@ -1,0 +1,30 @@
+.decorative-leaf {
+  position: absolute;
+  color: var(--color-text-secondary); /* Warna kecoklatan gelap dari theme */
+  pointer-events: none;
+  z-index: 0; /* Di bawah konten utama */
+}
+
+/* 
+  Posisikan di sudut dengan jarak aman dari tepi layar.
+  Menggunakan nilai CSS clamp agar tetap harmonis baik di mobile maupun desktop.
+*/
+.decorative-leaf--top-left {
+  top: clamp(var(--space-2xl), 10vh, 120px);
+  left: clamp(var(--space-md), 5vw, 64px);
+}
+
+.decorative-leaf--top-right {
+  top: clamp(var(--space-2xl), 10vh, 120px);
+  right: clamp(var(--space-md), 5vw, 64px);
+}
+
+.decorative-leaf--bottom-left {
+  bottom: clamp(var(--space-2xl), 10vh, 120px);
+  left: clamp(var(--space-md), 5vw, 64px);
+}
+
+.decorative-leaf--bottom-right {
+  bottom: clamp(var(--space-2xl), 10vh, 120px);
+  right: clamp(var(--space-md), 5vw, 64px);
+}

@@ -1,0 +1,132 @@
+/* =============================================================
+   Opening.css — Styles untuk Section 1 (Opening)
+   Sumber: DESIGN.md Section 6
+   ============================================================= */
+
+.opening {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh; /* dynamic viewport height untuk mobile */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-primary);
+  overflow: hidden;
+}
+
+/* ─── Overlay hitam (menutup seluruh layar saat opening) ────── */
+.opening__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-opening);
+  background-color: var(--color-black-opening);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+/* ─── Titik warm ivory ─────────────────────────────────────── */
+.opening__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-dot);
+  will-change: transform, opacity;
+  /* Glow sangat subtle — terasa seperti cahaya kecil dalam gelap,
+     bukan spinner/particle (DESIGN.md Section 6 State 2) */
+  box-shadow: 0 0 24px 6px rgba(245, 240, 232, 0.12);
+}
+
+/* ─── Area konten (teks + CTA) ─────────────────────────────── */
+.opening__content {
+  position: relative;
+  z-index: var(--z-content);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-sm);
+  max-width: 540px;
+  padding: var(--space-md);
+}
+
+/* ─── Baris teks opening ───────────────────────────────────── */
+.opening__line {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: var(--leading-relaxed);
+  min-height: 2rem; /* Keep height even when empty */
+}
+
+.opening__cursor {
+  display: inline-block;
+  width: 2px;
+  animation: blink 1s step-end infinite;
+  color: var(--color-text-secondary);
+  font-weight: 300;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ─── CTA: understated, bukan button/pill/card ─────────────── */
+.opening__cta {
+  margin-top: var(--space-lg);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--tracking-wide);
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: var(--space-xs) var(--space-sm);
+  transition: opacity var(--duration-fast) var(--ease-gentle);
+}
+
+.opening__cta:hover,
+.opening__cta:focus-visible {
+  opacity: 0.55;
+}
+
+/* ─── Reduced motion: matikan will-change, hemat GPU ───────── */
+@media (prefers-reduced-motion: reduce) {
+  .opening__dot,
+  .opening__overlay {
+    will-change: auto;
+  }
+}
+
+/* ─── Start Journey Animation (Dot & Line) ─────────────────── */
+.opening__journey-start {
+  position: absolute;
+  top: 80vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.opening__journey-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-accent-warm);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(196, 122, 69, 0.8);
+}
+
+.opening__journey-line {
+  width: 2px;
+  background-color: var(--color-accent-warm);
+  box-shadow: 0 0 6px rgba(196, 122, 69, 0.5);
+  /* height animated via Framer Motion */
+}

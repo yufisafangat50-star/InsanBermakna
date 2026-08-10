@@ -1,0 +1,55 @@
+.audio-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+.audio-toggle:focus-visible {
+  outline: 2px solid var(--color-accent-warm);
+  outline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+  .audio-toggle {
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+.audio-icon {
+  display: block;
+  color: var(--color-text-primary);
+}
+
+.audio-icon .bar {
+  transform-origin: 50% 50%;
+  animation: equalize 1.2s ease-in-out infinite;
+}
+
+.audio-icon .bar-1 { animation-delay: 0.0s; animation-duration: 1.1s; }
+.audio-icon .bar-2 { animation-delay: -0.3s; animation-duration: 1.3s; }
+.audio-icon .bar-3 { animation-delay: -0.6s; animation-duration: 1.0s; }
+.audio-icon .bar-4 { animation-delay: -0.9s; animation-duration: 1.2s; }
+
+@keyframes equalize {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audio-icon .bar {
+    animation: none;
+    transform: scaleY(0.5);
+  }
+}

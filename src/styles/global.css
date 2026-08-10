@@ -1,0 +1,139 @@
+/* =============================================================
+   Global Styles — InsanBermakna
+   Reset + base styles + paper texture
+   Sumber: DESIGN.md Section 3 (Paper Texture), Section 13 (Responsive)
+   ============================================================= */
+
+@import './typography.css';
+@import './variables.css';
+
+/* --- Reset -------------------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-serif);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* --- Paper Texture Overlay ----------------------------------
+   DESIGN.md Section 3: "sangat subtle: fine grain, paper fibers
+   samar, sedikit noise, tactile — tapi user hanya boleh merasa
+   'background-nya hangat', bukan sadar ada efek noise."
+   Implementasi: pseudo-element dengan SVG noise filter.
+   ------------------------------------------------------------ */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.02; /* Extremely subtle paper grain */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* --- Selection ---------------------------------------------- */
+::selection {
+  background-color: var(--color-accent-warm);
+  color: var(--color-bg-primary);
+}
+
+/* --- Focus visible (accessibility) -------------------------- */
+:focus-visible {
+  outline: 2px solid var(--color-accent-warm);
+  outline-offset: 3px;
+}
+
+/* --- Typography helpers ------------------------------------- */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+p {
+  line-height: var(--leading-relaxed);
+}
+
+/* --- CTA link styling (understated, sesuai DESIGN.md) ------- */
+.cta-link {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--tracking-wide);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity var(--duration-fast) var(--ease-gentle);
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.cta-link:hover,
+.cta-link:focus-visible {
+  opacity: 0.6;
+}
+
+/* --- Section spacing ---------------------------------------- */
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg) var(--space-md);
+  position: relative;
+}
+
+/* --- Accessibility: reduced motion --------------------------
+   DESIGN.md Section 14: "Wajib mendukung prefers-reduced-motion:
+   kurangi movement, ganti animasi panjang dengan fade,
+   pertahankan seluruh konten"
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Responsive: desktop breathing room ---------------------
+   DESIGN.md Section 13: "Desktop: lebih banyak negative space,
+   komposisi lebih lebar, typography lebih breathing"
+   ------------------------------------------------------------ */
+@media (min-width: 768px) {
+  .section {
+    padding: var(--space-xl) var(--space-2xl);
+  }
+}
+
+@media (min-width: 1200px) {
+  .section {
+    padding: var(--space-2xl) var(--space-3xl);
+  }
+}
