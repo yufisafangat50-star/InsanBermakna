@@ -54,12 +54,7 @@ export default function Penutup() {
     );
     const textDuration = reduced ? 3000 : 7500;
     const baseTiming = textStartDelay + textDuration;
-    timeouts.push(
-      setTimeout(() => {
-        window.dispatchEvent(new CustomEvent('insanbermakna:fadeOutMusic'));
-        window.dispatchEvent(new CustomEvent('insanbermakna:hideAudioToggle'));
-      }, baseTiming)
-    );
+
     const silenceDuration = reduced ? 1000 : 2000;
     timeouts.push(
       setTimeout(() => {
@@ -72,6 +67,8 @@ export default function Penutup() {
   useEffect(() => {
     if (showFinalText && hasReachedBottom && !finalSequenceStarted.current) {
       finalSequenceStarted.current = true;
+      window.dispatchEvent(new CustomEvent('insanbermakna:fadeOutMusic'));
+      window.dispatchEvent(new CustomEvent('insanbermakna:hideAudioToggle'));
       const t1 = setTimeout(() => {
         setShowFinalDot(true);
       }, reduced ? 500 : 1000);
