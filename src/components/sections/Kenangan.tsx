@@ -1,5 +1,5 @@
-import { useRef, useState, useCallback, useLayoutEffect, useEffect } from 'react';
-import { motion, useScroll, useReducedMotion, useTransform, useInView, MotionValue } from 'framer-motion';
+import { useRef, useState, useCallback, useLayoutEffect } from 'react';
+import { motion, useScroll, useReducedMotion, useTransform, MotionValue } from 'framer-motion';
 import { kenanganMoments } from '../../content/copy';
 import DecorativeLeaf from '../shared/DecorativeLeaf';
 import VisualMetaphor from './VisualMetaphor';
@@ -162,8 +162,6 @@ function MemoryMoment({ index, lines, reduced, setAnchorRef, point, lineProgress
   );
   const textOpacity = useTransform(scrollYProgress, [0.1, 0.3], [0, 1]);
   const textY = useTransform(scrollYProgress, [0.1, 0.4], [reduced ? 0 : 30, 0]);
-  const textRef = useRef<HTMLDivElement>(null);
-  const isTextInView = useInView(textRef, { once: true, margin: "-20% 0px -20% 0px" });
   return (
     <div className={`moment moment--${isEven ? 'even' : 'odd'}`} ref={ref}>
       <div className="moment__anchor-container">
@@ -207,7 +205,6 @@ function MemoryMoment({ index, lines, reduced, setAnchorRef, point, lineProgress
         <motion.div 
           className="moment__text-group"
           style={{ opacity: textOpacity, y: textY }}
-          ref={textRef}
         >
           {}
           <div className="moment__photo-wrapper">
