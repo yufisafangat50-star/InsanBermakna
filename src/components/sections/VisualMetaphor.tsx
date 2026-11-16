@@ -17,7 +17,7 @@ const METAPHOR_STYLE = {
 const EASE_GENTLE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 export default function VisualMetaphor({ index, isInView, reduced }: VisualMetaphorProps) {
   const baseTransition = { duration: reduced ? 0.4 : 1.5, ease: EASE_GENTLE, delay: reduced ? 0 : 0.2 };
-  switch (index) {
+  switch (index % 8) {
     case 0:
       return (
         <svg style={METAPHOR_STYLE} viewBox="0 0 24 24" aria-hidden="true">

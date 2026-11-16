@@ -136,10 +136,11 @@
   position: relative;
   background: var(--color-bg-secondary, #fdfbf7);
   padding: 8px 8px 24px 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   margin-bottom: var(--space-md);
-  max-width: 100%;
+  width: 100%;
+  max-width: 380px;
   border-radius: 2px;
   /* Inline rotation is overridden by even/odd classes below */
 }
@@ -179,16 +180,19 @@
 
 .moment__photo {
   width: 100%;
-  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
   display: block;
   border-radius: 2px;
-  filter: sepia(0.2) contrast(1.1); /* Slight vintage feel */
+  filter: sepia(0.12) contrast(1.05); /* Slight vintage feel */
 }
 
 .moment__narration {
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
+  max-width: 380px;
 }
 
 .moment__text {
@@ -197,6 +201,7 @@
   color: var(--color-text-primary);
   line-height: var(--leading-relaxed);
   margin: 0;
+  text-wrap: balance;
 }
 
 /* Moment Layout - Desktop (Alternating) */
@@ -232,6 +237,7 @@
   }
 
   .moment__content {
+    margin-left: 0;
     width: 100%;
   }
 

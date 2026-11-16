@@ -122,11 +122,12 @@ export default function Kenangan() {
       <div className="kenangan__origin-wrapper" aria-hidden="true">
       </div>
       <div className="kenangan__moments-container">
-        {kenanganMoments.map((lines, index) => (
+        {kenanganMoments.map((moment, index) => (
           <MemoryMoment 
-            key={index} 
+            key={moment.id || index} 
             index={index} 
-            lines={lines} 
+            image={moment.image}
+            lines={moment.lines} 
             reduced={reduced}
             setAnchorRef={(el) => (anchorsRef.current[index] = el)}
             point={points[index]}
@@ -138,8 +139,9 @@ export default function Kenangan() {
     </section>
   );
 }
-function MemoryMoment({ index, lines, reduced, setAnchorRef, point, lineProgress, totalHeight }: {
+function MemoryMoment({ index, image, lines, reduced, setAnchorRef, point, lineProgress, totalHeight }: {
   index: number;
+  image: string;
   lines: string[];
   reduced: boolean;
   setAnchorRef: (el: HTMLDivElement | null) => void;
@@ -193,7 +195,7 @@ function MemoryMoment({ index, lines, reduced, setAnchorRef, point, lineProgress
           </div>
           <div className="moment__anchor" aria-hidden="true">
             <VisualMetaphor 
-              index={index} 
+              index={index % 8} 
               isInView={point ? true : false} 
               reduced={reduced}
             />
@@ -210,8 +212,8 @@ function MemoryMoment({ index, lines, reduced, setAnchorRef, point, lineProgress
           <div className="moment__photo-wrapper">
             <div className="moment__photo-pin" aria-hidden="true" />
             <img 
-              src={`https://picsum.photos/seed/moment${index}/400/300`} 
-              alt={`Kenangan ${index + 1}`}
+              src={image} 
+              alt={lines.join(' ')}
               className="moment__photo"
               loading="lazy"
             />
