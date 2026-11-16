@@ -194,7 +194,7 @@
 .moment__narration {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: 0;
   max-width: 380px;
 }
 

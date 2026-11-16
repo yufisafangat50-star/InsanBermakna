@@ -244,11 +244,9 @@ function MemoryMoment({ index, image, lines, reduced, setAnchorRef, point, lineP
               decoding="async"
             />
           </div>
-          {}
+          {/* Narration text */}
           <div className="moment__narration">
-            {lines.map((line, i) => (
-              <p key={i} className="moment__text">{line}</p>
-            ))}
+            <p className="moment__text">{lines.join(' ')}</p>
           </div>
         </motion.div>
       </div>
