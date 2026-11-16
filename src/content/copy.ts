@@ -136,8 +136,8 @@ export const kenanganMoments: KenanganMoment[] = [
     id: '20',
     image: '/photos/20.jpg',
     lines: [
-      'Dengan jas kuning dan senyum yang tak sabar,',
-      'kami siap menyambut hari ini.',
+      'Dibalut almamater dan senyum yang tak sabar,',
+      'kami siap melangkah menyongsong esok hari.',
     ],
   },
   {

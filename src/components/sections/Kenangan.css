@@ -59,6 +59,8 @@
   align-items: center;
   width: 100%;
   min-height: 80px;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 450px;
 }
 
 .moment__anchor-container {
@@ -180,12 +182,13 @@
 
 .moment__photo {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: auto;
+  max-height: 420px;
   object-fit: cover;
   object-position: center;
   display: block;
   border-radius: 2px;
-  filter: sepia(0.12) contrast(1.05); /* Slight vintage feel */
+  filter: sepia(0.08) contrast(1.04);
 }
 
 .moment__narration {

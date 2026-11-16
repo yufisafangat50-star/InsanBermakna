@@ -97,14 +97,27 @@ export default function Kenangan() {
               strokeWidth="1.5"
               strokeOpacity="0.05"
             />
+            {/* Ambient vector glow layer (Hardware accelerated, 0 filter cost for 60/90/120fps) */}
+            <motion.path
+              d={svgPath}
+              fill="none"
+              stroke="var(--color-accent-warm)"
+              strokeWidth="6"
+              strokeOpacity="0.28"
+              strokeLinecap="round"
+              style={{
+                pathLength: reduced ? 1 : lineProgress,
+              }}
+            />
+            {/* Crisp foreground stroke */}
             <motion.path
               d={svgPath}
               fill="none"
               stroke="var(--color-accent-warm)"
               strokeWidth="2"
+              strokeLinecap="round"
               style={{
                 pathLength: reduced ? 1 : lineProgress,
-                filter: "drop-shadow(0 0 6px rgba(196, 122, 69, 0.5))"
               }}
             />
             {points.length > 0 && (
@@ -171,31 +184,43 @@ function MemoryMoment({ index, image, lines, reduced, setAnchorRef, point, lineP
           <div className="moment__anchor-bg" aria-hidden="true" />
           <div className="moment__anchor-glow" aria-hidden="true">
             <svg width="48" height="48" viewBox="0 0 48 48" style={{ overflow: 'visible' }}>
+              {/* Outer vector glow layer */}
+              <motion.path
+                d="M 24 1 A 23 23 0 0 0 24 47"
+                fill="none"
+                stroke="var(--color-accent-warm)"
+                strokeWidth="6"
+                strokeOpacity="0.22"
+                style={{ pathLength: reduced ? 1 : circleDrawProgress }}
+              />
+              <motion.path
+                d="M 24 1 A 23 23 0 0 1 24 47"
+                fill="none"
+                stroke="var(--color-accent-warm)"
+                strokeWidth="6"
+                strokeOpacity="0.22"
+                style={{ pathLength: reduced ? 1 : circleDrawProgress }}
+              />
+              {/* Foreground stroke */}
               <motion.path
                 d="M 24 1 A 23 23 0 0 0 24 47"
                 fill="none"
                 stroke="var(--color-accent-warm)"
                 strokeWidth="2"
-                style={{ 
-                  pathLength: reduced ? 1 : circleDrawProgress,
-                  filter: "drop-shadow(0 0 6px rgba(196, 122, 69, 0.5))"
-                }}
+                style={{ pathLength: reduced ? 1 : circleDrawProgress }}
               />
               <motion.path
                 d="M 24 1 A 23 23 0 0 1 24 47"
                 fill="none"
                 stroke="var(--color-accent-warm)"
                 strokeWidth="2"
-                style={{ 
-                  pathLength: reduced ? 1 : circleDrawProgress,
-                  filter: "drop-shadow(0 0 6px rgba(196, 122, 69, 0.5))"
-                }}
+                style={{ pathLength: reduced ? 1 : circleDrawProgress }}
               />
             </svg>
           </div>
           <div className="moment__anchor" aria-hidden="true">
             <VisualMetaphor 
-              index={index % 8} 
+              index={index} 
               isInView={point ? true : false} 
               reduced={reduced}
             />
@@ -216,6 +241,7 @@ function MemoryMoment({ index, image, lines, reduced, setAnchorRef, point, lineP
               alt={lines.join(' ')}
               className="moment__photo"
               loading="lazy"
+              decoding="async"
             />
           </div>
           {}
